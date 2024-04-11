@@ -1,9 +1,7 @@
 <p align="center">
-<img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2481424715,2807309609&fm=26&gp=0.jpg" width="200" height="200"/>
+<img src="https://img-for-bucket.oss-cn-shanghai.aliyuncs.com/20240411224135.png" width="200" height="200"/>
 </p>
-<h1 align="center">docsify-demo</h1>
-
-![image-20240408001335610](_coverpage.assets/image-20240408001335610.png)
+<h1 align="center">Java学习笔记</h1>
 
 [常用资源](https://shimo.im/docs/MuiACIg1HlYfVxrj/)
 [GitHub](https://github.com/Snailclimb/docsify-demo)
