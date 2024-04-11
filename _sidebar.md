@@ -22,3 +22,5 @@
 - space
   - [git](docs/unit_02/space.md)
 
+- 工具使用
+  - [Scoop：Windows下的包管理工具](docs/tools/Scoop：Windows下的包管理工具.md)
