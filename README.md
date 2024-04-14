@@ -41,6 +41,8 @@ docsify serve ./
 
 使用corn定时任务执行expcet脚本实现自动拉去
 
+设置corn定时任务格式21：40
+
 
 
 
