@@ -2,7 +2,7 @@
 
 分享Java相关技术
 TEST crontrab -e是否更新
-reboot->vim
+reboot->vim->Ok
 
 
 [如何使用docsify搭建文档类型的网站](https://mp.weixin.qq.com/s/TPXHaTdfTYKrcpm77gPHyA)
