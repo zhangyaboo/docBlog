@@ -124,3 +124,51 @@ public class DemoTest {
 
 ```
 
+
+
+手动创建SpringBoot
+
+123
+
+创建maven依赖，引入启依赖坐标，引入web依赖（版本号有依赖坐标
+
+修改启动类
+
+```
+@SpringBootApplication
+public class SpringDemoApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(SpringDemoApplication.class, args);
+    }
+}
+```
+
+创建资源文件夹以及启动配置文件
+
+![image-20240509235226664](D:\Projects\jetbrains\docblog\README.assets\image-20240509235226664.png)
+
+配置文件
+
+官方文档
+
+[Common Application Properties (spring.io)](https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html#appendix.application-properties)
+
+
+
+不同配置文件类型
+
+properties
+
+yml yaml:更有层级
+
+
+
+> 虚拟目录是什么？
+
+![image-20240509235655704](D:\Projects\jetbrains\docblog\README.assets\image-20240509235655704.png)
+
+
+
+yml配置信息书写与获取
+
+整合第三方技术 
