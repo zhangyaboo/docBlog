@@ -204,11 +204,21 @@ yml配置信息书写与获取
 
 
 
----
+![image-20240510223955157](D:\Projects\jetbrains\docblog\README.assets\image-20240510223955157.png)
 
-## windows下查看占用资源的进程 
+> - `mysqld --standalone` 在后台启动；
+> - `mysqld --console`在控制台窗口启动
 
-1. 打开任务管理器，点击性能
-2. 点击性能下方的资源监视器
-3. 点击CPU，可以看到关联句柄输入框，输入被占用的文件夹或文件名称，点击搜索标志，即可查看到被占用进程
-4. 在任务管理器进程才当中中可查询到对应进程，结束进程即可结束进程。![在这里插入图片描述](https://img-blog.csdnimg.cn/direct/bccce1dba68246caaaa3283ca288f2dc.png)
+
+
+
+
+maven项目的结构要熟悉
+
+![image-20240510235510033](https://img-for-bucket.oss-cn-shanghai.aliyuncs.com/20240510235513.png)
+
+![image-20240510235641680](https://img-for-bucket.oss-cn-shanghai.aliyuncs.com/20240510235647.png)
+
+Q：maven项目报Test出出错
+
+Q：springboot整合mybatis依赖启动报错
