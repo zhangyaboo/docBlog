@@ -30,6 +30,8 @@ https://git.jetbrains.space/yihong/main/docblog.git
 
 ## springboot
 
+为什么要用springboot快速构建项目
+
 ![image-20240509232738269](https://img-for-bucket.oss-cn-shanghai.aliyuncs.com/20240509232741.png)
 
 传统方式构建spring应用程序，
@@ -40,6 +42,9 @@ https://git.jetbrains.space/yihong/main/docblog.git
 
 使用springboot:
 
+特点：
+
+```
 依靠**起步依赖**，利用maven依赖传递性
 
 **自动配置**
@@ -49,6 +54,7 @@ https://git.jetbrains.space/yihong/main/docblog.git
 外部化配置：将配置文件放入项目外，更新直接重新启动即可
 
 不需要xml，改为更加方便的yml
+```
 
 
 
@@ -126,11 +132,20 @@ public class DemoTest {
 
 
 
-手动创建SpringBoot
+### 手动创建SpringBoot
 
 123
 
 创建maven依赖，引入启依赖坐标，引入web依赖（版本号有依赖坐标
+
+```
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.5</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+```
 
 修改启动类
 
@@ -172,3 +187,28 @@ yml yaml:更有层级
 yml配置信息书写与获取
 
 整合第三方技术 
+
+配置文件
+
+
+
+整合Mybatis
+
+![image-20240510210150651](https://img-for-bucket.oss-cn-shanghai.aliyuncs.com/20240510210152.png)
+
+![image-20240510210213709](https://img-for-bucket.oss-cn-shanghai.aliyuncs.com/20240510210216.png)
+
+
+
+
+
+
+
+---
+
+## windows下查看占用资源的进程 
+
+1. 打开任务管理器，点击性能
+2. 点击性能下方的资源监视器
+3. 点击CPU，可以看到关联句柄输入框，输入被占用的文件夹或文件名称，点击搜索标志，即可查看到被占用进程
+4. 在任务管理器进程才当中中可查询到对应进程，结束进程即可结束进程。![在这里插入图片描述](https://img-blog.csdnimg.cn/direct/bccce1dba68246caaaa3283ca288f2dc.png)
