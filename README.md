@@ -1,11 +1,17 @@
-# TODO 待整理内容
+# README
+
+### 
+
+
+
+
 
 分享Java相关技术
 TEST crontrab -e是否更新
 reboot->vim->Ok
 TEST IN JOB 14:32:15
 git user idea
-
+docsify serve ./
 
 [如何使用docsify搭建文档类型的网站](https://mp.weixin.qq.com/s/TPXHaTdfTYKrcpm77gPHyA)
 
