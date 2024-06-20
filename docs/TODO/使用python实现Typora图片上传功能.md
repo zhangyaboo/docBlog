@@ -8,9 +8,9 @@
 
 使用自定命令上传的时候需要了解`Typora`上传命令的输入和输出格式，如下：
 
- ![image-20240619231658092](http://img-for-bucket.oss-cn-shanghai.aliyuncs.com/202406192323090.png)
+ <img src="http://img-for-bucket.oss-cn-shanghai.aliyuncs.com/202406192323090.png" alt="image-20240619231658092" style="zoom:67%;" />
 
-命令，是的没错，双斜杠
+命令，是的没错，双斜杠，读取路径的时候
 
 ```shell
 your order "C:\\Users\\106693\\AppData\\Local\\Temp\\Typora\\typora-icon2.png" "C:\\Users\\106693\\AppData\\Local\\Temp\\Typora\\typora-icon.png"
@@ -148,4 +148,18 @@ python的环境变量没配置好？直接路径
 C:/Users/xxxx/AppData/Local/Programs/Python/Python312/python.exe D:\Projects\python\upload.py "D:\Projects\python\config.json"
 ```
 
-![image-20240620003901060](http://img-for-bucket.oss-cn-shanghai.aliyuncs.com/2024062000401376.png)
+
+
+## 打包
+
+不打包的话，执行这条脚本需要python的环境，以及对应的第三方的包。因此要分享给其他使用的话需要进行打包。
+
+```shell
+# 安装打包工具
+pip install Pyinstaller
+# 打包命令
+Pyinstaller -D upload.py
+```
+
+
+
