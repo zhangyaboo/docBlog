@@ -2,39 +2,21 @@
 
 
 
-
-
-### 
-
-
-
-
-
-分享Java相关技术
-TEST crontrab -e是否更新
-reboot->vim->Ok
-TEST IN JOB 14:32:15
-git user idea
-docsify serve ./
-
 [如何使用docsify搭建文档类型的网站](https://mp.weixin.qq.com/s/TPXHaTdfTYKrcpm77gPHyA)
 
 [多页文档 (docsify.js.org)](https://docsify.js.org/#/zh-cn/more-pages)
 
+
+
+```
+# 启动
+docsify serve ./
+```
+
+
+
 项目仓库：
 https://git.jetbrains.space/yihong/main/docblog.git
-
-
-
-
-域名
-
-git仓库
-
-
-```
-https://git.jetbrains.space/yihong/main/docblog.git
-```
 
 
 
@@ -42,13 +24,7 @@ https://git.jetbrains.space/yihong/main/docblog.git
 
 为什么要用springboot快速构建项目
 
-![image-20240509232738269](https://img-for-bucket.oss-cn-shanghai.aliyuncs.com/20240509232741.png)
-
-传统方式构建spring应用程序，
-
-![image-20240509232835791](D:\Projects\jetbrains\docblog\README.assets\image-20240509232835791.png)
-
-导入项目繁琐
+传统方式构建spring应用程序，导入项目繁琐
 
 使用springboot:
 
