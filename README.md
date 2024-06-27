@@ -13,7 +13,9 @@ T
 docsify serve ./
 ```
 
-
+ 编辑
+使用pc端，可以直接使用typora+git的形式进行撰写
+在手机端，通过github进行编辑
 
 项目仓库：
 https://git.jetbrains.space/yihong/main/docblog.git
