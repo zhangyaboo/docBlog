@@ -22,6 +22,16 @@ https://git.jetbrains.space/yihong/main/docblog.git
 
 
 
+### 图片上传
+
+```
+C:\Users\106693\Desktop\Files\bat\Upload.bat
+```
+
+
+
+
+
 ## springboot
 
 为什么要用springboot快速构建项目
