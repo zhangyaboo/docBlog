@@ -492,3 +492,10 @@ sudo systemctl status myservice.service
 ```
 
 通过这些步骤，你可以在 Ubuntu 系统中配置 frp 服务或其他自定义服务在启动时自动运行，并在后台运行。
+
+
+
+### MinIO
+
+对象储存
+

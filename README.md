@@ -6,16 +6,10 @@
 
 [多页文档 (docsify.js.org)](https://docsify.js.org/#/zh-cn/more-pages)
 
-
-
 ```
 # 启动
 docsify serve ./
 ```
-
- 编辑
-使用pc端，可以直接使用typora+git的形式进行撰写
-在手机端，通过github进行编辑
 
 项目仓库：
 https://git.jetbrains.space/yihong/main/docblog.git
@@ -37,4 +31,39 @@ C:\Users\106693\AppData\Local\Programs\Python\Python312\python.exe D:\DE\py\uplo
 ```
 
 
+
+好的
+
+
+
+### 依赖注入
+
+```
+package org.example.springbootregister;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+
+@SpringBootApplication
+public class SpringbootRegisterApplication {
+
+    public static void main(String[] args) {
+       ApplicationContext context = SpringApplication.run(SpringbootRegisterApplication.class, args);
+        Object bean = context.getBean("country");
+        System.out.println(bean);
+    }
+
+    /*
+    将依赖中的Bean对象注册到IOC容器中
+     */
+    @Bean
+    public Country country(){
+        return new Country();
+    }
+
+}
+
+```
 
