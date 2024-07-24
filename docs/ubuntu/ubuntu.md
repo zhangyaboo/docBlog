@@ -495,6 +495,10 @@ sudo systemctl status myservice.service
 
 
 
+### Glances 资源监视
+
+[如何在 Ubuntu 20.04 上通过 Glances 监控系统资源 (linux-console.net)](https://cn.linux-console.net/?p=3064)
+
 ### MinIO
 
 对象储存
