@@ -1,6 +1,169 @@
 
 
-查询机器架构
+
+
+# docsify
+
+在 Ubuntu 上安装 Node.js、npm 和 Git，可以按照以下步骤操作：
+
+1. **更新包列表和系统软件：**
+   ```bash
+   sudo apt update
+   sudo apt upgrade -y
+   ```
+
+2. **安装 Node.js 和 npm：**
+   你可以通过 NodeSource PPA 安装最新的 Node.js 版本。这将同时安装 `npm`。
+
+   首先，添加 NodeSource PPA：
+   ```bash
+   curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+   ```
+
+   然后，安装 Node.js 和 npm：
+   ```bash
+   sudo apt install -y nodejs
+   ```
+
+   你可以用以下命令检查安装的版本：
+   ```bash
+   node -v
+   npm -v
+   ```
+
+3. **安装 Git：**
+   使用以下命令安装 Git：
+   ```bash
+   sudo apt install -y git
+   ```
+
+   你可以用以下命令检查安装的版本：
+   ```bash
+   git --version
+   ```
+
+以上命令将帮助你在 Ubuntu 上安装最新的 Node.js、npm 和 Git。如果你需要特定版本的 Node.js，可以在安装 NodeSource PPA 的时候指定相应的版本。
+
+```
+sudo apt update
+sudo apt upgrade -y
+
+```
+
+
+
+确保自己电脑下载安装了 NPM 并且使用这个命令：`npm i docsify-cli -g`安装了 docsify-cli 这个工具 。
+
+**1.新建一个文件夹：`mkdir docsify-demo`**
+
+**2.进入文件夹并运行 docsify 初始化命令：`cd docsify-demo` -> `docsify init ./`**
+
+**3.本地预览网站：`docsify serve ./` 然后访问：`http://localhost:3000/`**
+
+# Nginx
+
+好的，以下是在 Ubuntu 上安装 Nginx、设置开机自启、调整配置文件将 80 端口映射到本地 3000 端口的详细步骤：
+
+### 步骤1：更新包列表和系统软件
+
+首先，更新系统包列表并升级软件包：
+```bash
+sudo apt update
+sudo apt upgrade -y
+```
+
+### 步骤2：安装 Nginx
+
+使用以下命令安装 Nginx：
+```bash
+sudo apt install -y nginx
+```
+
+### 步骤3：设置 Nginx 开机自启
+
+安装完成后，确保 Nginx 服务在启动时自动启动：
+```bash
+sudo systemctl enable nginx
+```
+
+### 步骤4：启动 Nginx
+
+启动 Nginx 服务：
+```bash
+sudo systemctl start nginx
+```
+
+### 步骤5：调整 Nginx 配置文件，将 80 端口映射到本地 3000 端口
+
+编辑 Nginx 的默认配置文件：
+```bash
+sudo nano /etc/nginx/sites-available/default
+```
+
+找到类似于以下的配置块：
+```nginx
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name _;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+```
+
+将其修改为以下内容，将请求代理到本地的 3000 端口：
+```nginx
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    server_name _;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+保存文件并退出编辑器（在 nano 中按 `Ctrl+O` 保存，然后按 `Ctrl+X` 退出）。
+
+### 步骤6：测试 Nginx 配置
+
+在重新加载 Nginx 配置之前，先测试配置文件是否有语法错误：
+```bash
+sudo nginx -t
+```
+
+如果配置文件没有错误，你将看到如下输出：
+```
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+```
+
+### 步骤7：重新加载 Nginx 配置
+
+最后，重新加载 Nginx 配置以应用更改：
+```bash
+sudo systemctl reload nginx
+```
+
+### 验证
+
+现在，你可以打开浏览器，访问你的服务器 IP 地址或域名（例如 `http://your_server_ip`），它应该会将请求代理到本地运行在 3000 端口的服务。
+
+这些步骤完成后，你的 Nginx 已经设置为开机自启，并且配置为将所有来自 80 端口的请求代理到本地的 3000 端口。
+
+# 查询机器架构
 
 ```
 root@zhang:~# uname --m
@@ -502,4 +665,8 @@ sudo systemctl status myservice.service
 ### MinIO
 
 对象储存
+
+# 定时任务
+
+> 我现在需要在ubuntu系统上写一个定时任务，能够在每分钟执行对应的shell脚本命令，并且该定时任务能够开机自启动，脚本的命令为在cd到/projects/docblog文件夹，并且执行git pull的命令，每分钟执行一次，执行失败打印失败，不影响后面再次执行。并且要考虑到文件权限的问题
 
