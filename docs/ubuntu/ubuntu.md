@@ -670,3 +670,97 @@ sudo systemctl status myservice.service
 
 > 我现在需要在ubuntu系统上写一个定时任务，能够在每分钟执行对应的shell脚本命令，并且该定时任务能够开机自启动，脚本的命令为在cd到/projects/docblog文件夹，并且执行git pull的命令，每分钟执行一次，执行失败打印失败，不影响后面再次执行。并且要考虑到文件权限的问题
 
+为了在 Ubuntu 系统上设置一个定时任务，每分钟执行一次 `cd` 到 `/projects/docblog` 文件夹并运行 `git pull`，并确保考虑文件权限的问题，可以按照以下步骤进行：
+
+### 步骤1：创建 Shell 脚本
+
+编写一个 shell 脚本来执行所需的命令。在你的主目录下创建一个新的脚本文件：
+
+```bash
+nano ~/update_docblog.sh
+```
+
+在脚本文件中输入以下内容：
+
+```bash
+#!/bin/bash
+
+# 进入指定目录
+cd /projects/docblog || { echo "$(date): Failed to change directory to /projects/docblog" >> ~/update_docblog.log; exit 1; }
+
+# 执行 git pull 命令
+if ! git pull; then
+  echo "$(date): Failed to pull latest changes" >> ~/update_docblog.log
+fi
+```
+
+保存文件并退出编辑器（在 nano 中按 `Ctrl+O` 保存，然后按 `Ctrl+X` 退出）。
+
+### 步骤2：设置脚本的执行权限
+
+赋予脚本执行权限：
+
+```bash
+chmod +x ~/update_docblog.sh
+```
+
+### 步骤3：创建 Cron 任务
+
+编辑用户的 `cron` 表：
+
+```bash
+crontab -e
+```
+
+在打开的文件中添加以下行：
+
+```bash
+* * * * * /bin/bash ~/update_docblog.sh
+```
+
+这行的含义是每分钟执行一次 `update_docblog.sh` 脚本。
+
+### 步骤4：确保 Cron 服务开机自启
+
+在 Ubuntu 上，`cron` 服务默认是开机自启的，但你可以确保它处于启用状态：
+
+```bash
+sudo systemctl enable cron
+sudo systemctl start cron
+```
+
+### 步骤5：验证 Cron 任务
+
+保存并退出编辑器后，`cron` 将自动加载新的任务设置。你可以通过以下命令查看用户的当前 `cron` 任务：
+
+```bash
+crontab -l
+```
+
+### 验证
+
+检查日志文件 `~/update_docblog.log` 来验证脚本的执行情况：
+
+```bash
+cat ~/update_docblog.log
+```
+
+### 文件权限问题
+
+确保 `/projects/docblog` 目录和其中的文件对执行脚本的用户具有适当的权限。你可以使用以下命令检查和设置权限：
+
+```bash
+# 检查目录和文件的所有权
+ls -ld /projects/docblog
+ls -l /projects/docblog
+
+# 更改所有权（例如，将目录和文件的所有者设置为当前用户）
+sudo chown -R $(whoami):$(whoami) /projects/docblog
+
+# 检查和设置权限
+chmod -R u+rwx /projects/docblog
+```
+
+这将确保当前用户对 `/projects/docblog` 目录及其内容具有读写执行权限，以便能够正确运行 `git pull` 命令。
+
+以上步骤完成后，系统将在每分钟执行一次 `update_docblog.sh` 脚本，该脚本将进入 `/projects/docblog` 目录并执行 `git pull` 命令。即使某次执行失败，也不会影响后续的执行，并且日志文件中将记录失败信息。

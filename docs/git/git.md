@@ -100,3 +100,99 @@ ctrl shift -/+
 滚轮
 ```
 
+在 Ubuntu 系统上，为了使指定的 Git 目录在执行 `git pull` 或 `git push` 操作时不用再次输入用户名和密码，可以通过以下几种方法实现：
+
+### 方法1：使用 Git 凭证助手（推荐）
+
+Git 提供了一个凭证助手，可以在首次输入用户名和密码后记住它们，以便在后续操作中自动使用。
+
+1. **安装 Git 凭证助手：**
+
+   如果你使用的是 Git 2.11 及以上版本，`credential.helper` 默认已经包含在 Git 中。否则，你可以通过以下命令安装：
+
+   ```bash
+   sudo apt install git
+   ```
+
+2. **配置 Git 凭证助手：**
+
+   在 Git 配置中启用凭证助手：
+
+   ```bash
+   git config --global credential.helper store
+   ```
+
+3. **运行 `git pull` 或 `git push` 命令：**
+
+   当你第一次运行 `git pull` 或 `git push` 时，系统会提示输入用户名和密码。之后，凭证助手会将它们保存在 `~/.git-credentials` 文件中，后续操作将自动使用这些凭证。
+
+### 方法2：将凭证存储在 `.netrc` 文件中
+
+1. **编辑 `.netrc` 文件：**
+
+   创建或编辑主目录中的 `.netrc` 文件：
+
+   ```bash
+   nano ~/.netrc
+   ```
+
+2. **在文件中添加 Git 凭证：**
+
+   根据你的 Git 服务器 URL，添加以下内容：
+
+   ```
+   machine github.com
+   login your_username
+   password your_password
+   ```
+
+   请将 `github.com` 替换为你的 Git 服务器域名，将 `your_username` 和 `your_password` 替换为你的 Git 用户名和密码。
+
+3. **设置 `.netrc` 文件权限：**
+
+   确保该文件只有当前用户可读写：
+
+   ```bash
+   chmod 600 ~/.netrc
+   ```
+
+### 方法3：使用 SSH 密钥（更安全的方法）
+
+1. **生成 SSH 密钥：**
+
+   如果你还没有 SSH 密钥，可以生成一个：
+
+   ```bash
+   ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+   ```
+
+   按提示操作并记住生成的文件路径（默认是 `~/.ssh/id_rsa`）。
+
+2. **添加 SSH 密钥到 SSH 代理：**
+
+   启动 SSH 代理并添加你的 SSH 密钥：
+
+   ```bash
+   eval "$(ssh-agent -s)"
+   ssh-add ~/.ssh/id_rsa
+   ```
+
+3. **将公钥添加到 Git 服务器：**
+
+   打开 `~/.ssh/id_rsa.pub` 文件，复制其中的内容，并将其添加到你的 Git 服务器的 SSH 密钥设置中。
+
+4. **使用 SSH URL 克隆 Git 仓库：**
+
+   使用 SSH URL 克隆你的 Git 仓库：
+
+   ```bash
+   git clone git@github.com:your_username/your_repository.git
+   ```
+
+   这样，每次 `git pull` 或 `git push` 时，将使用 SSH 密钥进行身份验证，而无需输入用户名和密码。
+
+### 验证
+
+不论你使用哪种方法，配置完成后，尝试在你的 Git 目录中运行 `git pull` 或 `git push`，以确认无需再次输入用户名和密码。
+
+这些方法将帮助你在 Ubuntu 系统上为指定的 Git 目录设置用户名和密码，使其在执行 `git pull` 或 `git push` 时自动进行身份验证。选择适合你需求的方法，推荐使用 SSH 密钥以提高安全性。
