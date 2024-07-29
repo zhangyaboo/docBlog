@@ -1,10 +1,8 @@
 # README
 
-![image-20240727180533064](http://img-for-bucket.oss-cn-shanghai.aliyuncs.com/20240727180538843.png)
 
-```
-TEST
-```
+
+
 
 [如何使用docsify搭建文档类型的网站](https://mp.weixin.qq.com/s/TPXHaTdfTYKrcpm77gPHyA)
 
