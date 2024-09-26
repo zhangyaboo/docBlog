@@ -61,7 +61,7 @@ Metadata is data that describes data, and HTML has an "official" way of adding m
 In the example we saw above, this line was included:
 
 HTMLCopy to Clipboard
-
+![img.png](img.png)
 ```
 <meta charset="utf-8" />
 ```
